@@ -1,0 +1,35 @@
+[
+  {"id": "S01", "message": "退货需要什么条件", "expected_tools": ["query_rag"], "expected_keywords": ["退", "货"], "scenario": "纯政策查询-退货"},
+  {"id": "S02", "message": "退款几天能到账", "expected_tools": ["query_rag"], "expected_keywords": ["退款"], "scenario": "纯政策查询-退款"},
+  {"id": "S03", "message": "换货流程怎么走", "expected_tools": ["query_rag"], "expected_keywords": ["换货"], "scenario": "纯政策查询-换货"},
+  {"id": "S04", "message": "物流一般几天能到", "expected_tools": ["query_rag"], "expected_keywords": ["物流"], "scenario": "纯政策查询-物流"},
+  {"id": "S05", "message": "退货运费谁出", "expected_tools": ["query_rag"], "expected_keywords": ["退", "运费"], "scenario": "纯政策查询-退货"},
+  {"id": "S06", "message": "收货后发现质量问题怎么办", "expected_tools": ["query_rag"], "expected_keywords": ["质量", "退", "换"], "scenario": "纯政策查询-售后"},
+  {"id": "S07", "message": "已发货的订单还能取消吗", "expected_tools": ["query_rag"], "expected_keywords": ["取消"], "scenario": "纯政策查询-订单"},
+
+  {"id": "S08", "message": "帮我查一下ORD-1003的订单状态", "expected_tools": ["create_ticket"], "expected_keywords": ["ORD-1003"], "scenario": "纯业务-订单查询"},
+  {"id": "S09", "message": "ORD-1005我要退差价，买的时候99现在79了", "expected_tools": ["create_ticket"], "expected_keywords": ["ORD-1005", "差"], "scenario": "纯业务-退差价"},
+  {"id": "S10", "message": "把ORD-1003的收货地址改成上海市徐汇区", "expected_tools": ["create_ticket"], "expected_keywords": ["ORD-1003", "地址"], "scenario": "纯业务-改地址"},
+  {"id": "S11", "message": "催一下ORD-1008的快递，太慢了", "expected_tools": ["create_ticket"], "expected_keywords": ["ORD-1008", "催"], "scenario": "纯业务-催物流"},
+  {"id": "S12", "message": "ORD-1004收到的商品有质量问题，我要换货", "expected_tools": ["create_ticket"], "expected_keywords": ["ORD-1004", "质量"], "scenario": "纯业务-售后建单"},
+  {"id": "S13", "message": "运单号SF1234567890帮我查一下到哪了", "expected_tools": ["create_ticket"], "expected_keywords": ["SF1234567890"], "scenario": "纯业务-物流追踪"},
+  {"id": "S14", "message": "给ORD-1006加个备注：发货前电话确认", "expected_tools": ["create_ticket"], "expected_keywords": ["ORD-1006", "备注"], "scenario": "纯业务-订单修改"},
+
+  {"id": "S15", "message": "退货政策是什么，另外帮我把ORD-2001退了", "expected_tools": ["query_rag", "create_ticket"], "expected_keywords": ["退", "ORD-2001"], "scenario": "混合-先查后退"},
+  {"id": "S16", "message": "换货有什么要求？ORD-1004我想换一个", "expected_tools": ["query_rag", "create_ticket"], "expected_keywords": ["换", "ORD-1004"], "scenario": "混合-先查后换"},
+  {"id": "S17", "message": "你们退款多长时间到账？我上周的订单还没收到退款", "expected_tools": ["query_rag", "create_ticket"], "expected_keywords": ["退款"], "scenario": "混合-政策+催退款"},
+  {"id": "S18", "message": "公司规定退货运费谁出？我有个单子要退", "expected_tools": ["query_rag", "create_ticket"], "expected_keywords": ["退", "运费"], "scenario": "混合-先查后退"},
+  {"id": "S19", "message": "物流要几天能到上海？帮我看看我的快递到哪了", "expected_tools": ["query_rag", "create_ticket"], "expected_keywords": ["物流", "上海"], "scenario": "混合-查询+追踪"},
+  {"id": "S20", "message": "售后政策在哪看，我买的手机屏幕有问题要修", "expected_tools": ["query_rag", "create_ticket"], "expected_keywords": ["售后", "修", "屏幕"], "scenario": "混合-先查后修"},
+  {"id": "S21", "message": "退差价有时间限制吗？我上周买的现在降价了帮我退一下", "expected_tools": ["query_rag", "create_ticket"], "expected_keywords": ["差", "时间"], "scenario": "混合-政策+退差价"},
+
+  {"id": "S22", "message": "你好", "expected_tools": [], "expected_keywords": [], "scenario": "边界-闲聊"},
+  {"id": "S23", "message": "在吗", "expected_tools": [], "expected_keywords": [], "scenario": "边界-闲聊"},
+  {"id": "S24", "message": "帮我看看我的快递", "expected_tools": ["create_ticket"], "expected_keywords": ["快递"], "scenario": "边界-模糊表述"},
+  {"id": "S25", "message": "退款退款退款", "expected_tools": ["query_rag"], "expected_keywords": ["退款"], "scenario": "边界-情绪化"},
+  {"id": "S26", "message": "我想问一下", "expected_tools": [], "expected_keywords": [], "scenario": "边界-不完整"},
+  {"id": "S27", "message": "我买的东西怎么还没到", "expected_tools": ["create_ticket"], "expected_keywords": ["到"], "scenario": "边界-无订单号"},
+  {"id": "S28", "message": "你们客服电话多少", "expected_tools": ["query_rag"], "expected_keywords": ["电话"], "scenario": "边界-联系方式"},
+  {"id": "S29", "message": "这个商品买贵了", "expected_tools": ["query_rag"], "expected_keywords": ["差", "贵"], "scenario": "边界-模糊售后"},
+  {"id": "S30", "message": "上个礼拜二下的那个红色的单子怎么还没到啊", "expected_tools": ["create_ticket"], "expected_keywords": ["到"], "scenario": "边界-口语化"}
+]

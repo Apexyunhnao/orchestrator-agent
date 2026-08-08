@@ -1,0 +1,51 @@
+# 智能客服系统 — 三服务 Docker Compose
+# 启动: docker-compose up -d
+# 编排器 :8000 | 客服工单 Agent :8001 | RAG Agent :8002
+
+services:
+  rag:
+    build: ../rag-agent
+    ports:
+      - "8002:8002"
+    environment:
+      - DEEPSEEK_API_KEY=${DEEPSEEK_API_KEY}
+    volumes:
+      - ../rag-agent/data:/app/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8002/"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  ticket:
+    build: ../customer-service-agent
+    ports:
+      - "8001:8001"
+    environment:
+      - DEEPSEEK_API_KEY=${DEEPSEEK_API_KEY}
+    volumes:
+      - ../customer-service-agent/data:/app/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  orchestrator:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DEEPSEEK_API_KEY=${DEEPSEEK_API_KEY}
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      rag:
+        condition: service_healthy
+      ticket:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
