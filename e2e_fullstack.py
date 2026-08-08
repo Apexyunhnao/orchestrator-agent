@@ -120,6 +120,15 @@ def main():
         test_case("帮我查一下 ORD-1003 的订单状态", "纯业务操作 → 只调 ticket")
         test_case("退货要什么条件，另外帮我把 ORD-1003 退了", "混合场景 → 先 RAG 后 ticket")
 
+        # 5. 降级测试：关掉 RAG，验证编排器不崩
+        print("=" * 60)
+        print("  降级测试：关闭 RAG Agent")
+        print("=" * 60)
+        rag_proc.kill()
+        rag_proc.wait()
+        time.sleep(0.5)
+        test_case("退货需要什么条件", "降级 → RAG 不可用，应返回降级提示")
+
         print("=" * 60)
         print("  Full-stack e2e test completed")
         print("=" * 60)
@@ -127,8 +136,11 @@ def main():
     finally:
         print("\n关闭所有服务...")
         for name, proc in reversed(processes):
-            proc.kill()
-            proc.wait()
+            try:
+                proc.kill()
+                proc.wait()
+            except Exception:
+                pass  # 进程可能已被降级测试关闭
             print(f"  {name} 已关闭")
 
 

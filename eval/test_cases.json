@@ -31,5 +31,8 @@
   {"id": "S27", "message": "我买的东西怎么还没到", "expected_tools": ["create_ticket"], "expected_keywords": ["到"], "scenario": "边界-无订单号"},
   {"id": "S28", "message": "你们客服电话多少", "expected_tools": ["query_rag"], "expected_keywords": ["电话"], "scenario": "边界-联系方式"},
   {"id": "S29", "message": "这个商品买贵了", "expected_tools": ["query_rag"], "expected_keywords": ["差", "贵"], "scenario": "边界-模糊售后"},
-  {"id": "S30", "message": "上个礼拜二下的那个红色的单子怎么还没到啊", "expected_tools": ["create_ticket"], "expected_keywords": ["到"], "scenario": "边界-口语化"}
+  {"id": "S30", "message": "上个礼拜二下的那个红色的单子怎么还没到啊", "expected_tools": ["create_ticket"], "expected_keywords": ["到"], "scenario": "边界-口语化"},
+
+  {"id": "S31", "message": "我想退掉ORD-1003，但不确定能不能退。先帮我查下退货条件，能退的话就帮我退了", "expected_tools": ["query_rag", "create_ticket"], "expected_keywords": ["7天", "ORD-1003", "退"], "scenario": "三轮链路-先查后操作"},
+  {"id": "S32", "message": "我前天买的ORD-1003还没发货，退货政策怎么说的？我这情况能退吗", "expected_tools": ["create_ticket", "query_rag"], "expected_keywords": ["待发货", "7天", "退"], "scenario": "上下文传递-订单状态+政策匹配"}
 ]

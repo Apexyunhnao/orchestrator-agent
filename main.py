@@ -6,14 +6,16 @@ FastAPI 入口 — Supervisor 编排器。
 
 import json
 import os
+import re
 import sqlite3
 import time
 from contextlib import asynccontextmanager
 from typing import Any
 
-from fastapi import FastAPI
+import httpx
+from fastapi import FastAPI, HTTPException
 from fastapi.responses import HTMLResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
 
 from supervisor import run_supervisor_with_trace
 
@@ -72,6 +74,20 @@ app = FastAPI(title="智能客服 Supervisor", version="2.0.0", lifespan=lifespa
 class GatewayRequest(BaseModel):
     message: str
     user_identifier: str = ""
+
+    @field_validator("message")
+    @classmethod
+    def validate_message(cls, v: str) -> str:
+        """输入校验：空消息/超长/非中文拒绝。"""
+        if not v or not v.strip():
+            raise HTTPException(status_code=400, detail="消息不能为空")
+        if len(v) > 500:
+            raise HTTPException(status_code=400, detail="消息超过500字，请精简后重试")
+        # 计算中文字符占比
+        chinese_chars = len(re.findall(r"[一-鿿]", v))
+        if len(v.strip()) > 3 and chinese_chars / max(len(v.strip()), 1) < 0.3:
+            raise HTTPException(status_code=400, detail="仅支持中文请求，请用中文描述您的问题")
+        return v.strip()
 
 
 class GatewayResponse(BaseModel):
@@ -132,6 +148,20 @@ def stats() -> dict[str, Any]:
         "recent_10": recent,
         "tool_usage": tool_counts,
     }
+
+
+@app.get("/health")
+def health() -> dict[str, Any]:
+    """健康检查：编排器自身 + 子Agent 可达性。"""
+    status = {"orchestrator": "ok", "rag": "unknown", "ticket": "unknown"}
+    for name, url in [("rag", "http://127.0.0.1:8002/health"), ("ticket", "http://127.0.0.1:8001/health")]:
+        try:
+            r = httpx.get(url, timeout=3)
+            status[name] = "ok" if r.status_code == 200 else f"error({r.status_code})"
+        except Exception:
+            status[name] = "unreachable"
+    all_ok = all(v == "ok" for v in status.values())
+    return {"healthy": all_ok, "services": status}
 
 
 # ── Web 页面 ───────────────────────────────────────────
