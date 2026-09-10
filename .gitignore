@@ -5,3 +5,5 @@ __pycache__/
 data/gateway.db
 logs/
 .DS_Store
+# 面试准备文档不入库（只留本地 E:\面试准备\）
+docs/interview-prep.md
