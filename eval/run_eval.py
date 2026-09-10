@@ -7,6 +7,7 @@ import json
 import os
 import sys
 import time
+import datetime
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -120,3 +121,36 @@ if kw_fails:
         print(f"    消息: {r['message']}")
         print(f"    未命中: {r['kw_missed']}")
         print(f"    回答: {r['answer_preview']}...")
+
+
+# ── 结果快照（机器可读，README / 简历只引用这里，禁止手写数字）────
+
+RESULTS = os.path.join(os.path.dirname(__file__), "results.json")
+
+by_scenario = {
+    label: {
+        "total": len(items),
+        "tool_ok": sum(1 for r in items if r["tool_ok"]),
+        "keyword_ok": sum(1 for r in items if r["kw_ok"]),
+    }
+    for label, items in scenario_groups.items()
+}
+
+snapshot = {
+    "generated_at": datetime.datetime.now().isoformat(timespec="seconds"),
+    "test_file": os.path.basename(TEST_FILE),
+    "tool_check_rule": "set(expected_tools).issubset(set(actual_tools))",
+    "total": total,
+    "tool_correct": tool_correct,
+    "tool_accuracy": round(tool_correct / total * 100, 1) if total else None,
+    "keyword_correct": keyword_correct,
+    "keyword_accuracy": round(keyword_correct / total * 100, 1) if total else None,
+    "by_scenario": by_scenario,
+    "tool_fail_ids": [r["id"] for r in tool_fails],
+    "keyword_fail_ids": [r["id"] for r in kw_fails],
+    "cases": results,
+}
+
+with open(RESULTS, "w", encoding="utf-8") as f:
+    json.dump(snapshot, f, ensure_ascii=False, indent=2)
+print(f"\n[eval] 结果快照已写入 {RESULTS}")

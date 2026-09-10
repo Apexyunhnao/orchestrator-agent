@@ -1,0 +1,697 @@
+{
+  "generated_at": "2026-09-10T15:05:18",
+  "test_file": "test_cases.json",
+  "tool_check_rule": "set(expected_tools).issubset(set(actual_tools))",
+  "total": 32,
+  "tool_correct": 31,
+  "tool_accuracy": 96.9,
+  "keyword_correct": 17,
+  "keyword_accuracy": 53.1,
+  "by_scenario": {
+    "纯政策查询": {
+      "total": 7,
+      "tool_ok": 7,
+      "keyword_ok": 6
+    },
+    "纯业务": {
+      "total": 7,
+      "tool_ok": 7,
+      "keyword_ok": 6
+    },
+    "混合": {
+      "total": 7,
+      "tool_ok": 7,
+      "keyword_ok": 1
+    },
+    "边界": {
+      "total": 9,
+      "tool_ok": 8,
+      "keyword_ok": 4
+    },
+    "三轮链路": {
+      "total": 1,
+      "tool_ok": 1,
+      "keyword_ok": 0
+    },
+    "上下文传递": {
+      "total": 1,
+      "tool_ok": 1,
+      "keyword_ok": 0
+    }
+  },
+  "tool_fail_ids": [
+    "S28"
+  ],
+  "keyword_fail_ids": [
+    "S01",
+    "S11",
+    "S15",
+    "S17",
+    "S18",
+    "S19",
+    "S20",
+    "S21",
+    "S24",
+    "S25",
+    "S27",
+    "S29",
+    "S30",
+    "S31",
+    "S32"
+  ],
+  "cases": [
+    {
+      "id": "S01",
+      "message": "退货需要什么条件",
+      "scenario": "纯政策查询-退货",
+      "expected_tools": [
+        "query_rag"
+      ],
+      "actual_tools": [
+        "query_rag"
+      ],
+      "tool_ok": true,
+      "expected_keywords": [
+        "退",
+        "货"
+      ],
+      "kw_ok": false,
+      "kw_missed": [
+        "退",
+        "货"
+      ],
+      "answer_preview": "知识库暂不可用"
+    },
+    {
+      "id": "S02",
+      "message": "退款几天能到账",
+      "scenario": "纯政策查询-退款",
+      "expected_tools": [
+        "query_rag"
+      ],
+      "actual_tools": [
+        "query_rag"
+      ],
+      "tool_ok": true,
+      "expected_keywords": [
+        "退款"
+      ],
+      "kw_ok": true,
+      "kw_missed": [],
+      "answer_preview": "根据文档片段，退款到账时限如下：\n\n- 退货退款：验货通过后 3-7 个工作日到账\n- 差价退款：1-3 个工作日到账\n- 订单取消（未发货）：即时退款，1-2 个工作日到账\n- 已发货订单取消：需先拦截物流，拦截成功后 3-5 个工作日退"
+    },
+    {
+      "id": "S03",
+      "message": "换货流程怎么走",
+      "scenario": "纯政策查询-换货",
+      "expected_tools": [
+        "query_rag"
+      ],
+      "actual_tools": [
+        "query_rag"
+      ],
+      "tool_ok": true,
+      "expected_keywords": [
+        "换货"
+      ],
+      "kw_ok": true,
+      "kw_missed": [],
+      "answer_preview": "根据文档片段，换货条件和流程如下：\n\n**换货条件：**\n- 签收后 15 天内可申请换货\n- 适用于尺码不符、颜色发错、轻微瑕疵等非严重质量问题\n- 严重质量问题（破损、无法使用）建议走退货退款\n\n**换货流程：**\n1. 在订单页面点击"
+    },
+    {
+      "id": "S04",
+      "message": "物流一般几天能到",
+      "scenario": "纯政策查询-物流",
+      "expected_tools": [
+        "query_rag"
+      ],
+      "actual_tools": [
+        "query_rag"
+      ],
+      "tool_ok": true,
+      "expected_keywords": [
+        "物流"
+      ],
+      "kw_ok": true,
+      "kw_missed": [],
+      "answer_preview": "根据文档中的配送时效规定：\n\n- 现货商品：下单后 24 小时内发货，1-3 个工作日送达（一二线城市）\n- 预售商品：按商品页面标注的发货时间，通常 7-15 天\n- 偏远地区（新疆、西藏、内蒙古）：送达时间增加 2-4 个工作日\n\n[来"
+    },
+    {
+      "id": "S05",
+      "message": "退货运费谁出",
+      "scenario": "纯政策查询-退货",
+      "expected_tools": [
+        "query_rag"
+      ],
+      "actual_tools": [
+        "query_rag"
+      ],
+      "tool_ok": true,
+      "expected_keywords": [
+        "退",
+        "运费"
+      ],
+      "kw_ok": true,
+      "kw_missed": [],
+      "answer_preview": "根据文档内容，退货运费承担规则如下：\n\n- 商品质量问题：商家承担来回运费\n- 买家个人原因（不喜欢、买错了）：买家承担退货运费\n\n[来源: 退货政策.md]"
+    },
+    {
+      "id": "S06",
+      "message": "收货后发现质量问题怎么办",
+      "scenario": "纯政策查询-售后",
+      "expected_tools": [
+        "query_rag"
+      ],
+      "actual_tools": [
+        "query_rag"
+      ],
+      "tool_ok": true,
+      "expected_keywords": [
+        "质量",
+        "退",
+        "换"
+      ],
+      "kw_ok": true,
+      "kw_missed": [],
+      "answer_preview": "根据文档片段，商品质量问题的退换货条件和流程如下：\n\n**质量问题处理建议：**\n- 严重质量问题（破损、无法使用）建议走退货退款。\n- 商品质量问题，商家承担来回运费。\n\n**退货条件和流程：**\n- 退货条件：自签收之日起 7 天内可申"
+    },
+    {
+      "id": "S07",
+      "message": "已发货的订单还能取消吗",
+      "scenario": "纯政策查询-订单",
+      "expected_tools": [
+        "query_rag"
+      ],
+      "actual_tools": [
+        "query_rag"
+      ],
+      "tool_ok": true,
+      "expected_keywords": [
+        "取消"
+      ],
+      "kw_ok": true,
+      "kw_missed": [],
+      "answer_preview": "根据文档片段，已发货订单可以取消，但需先拦截物流，拦截成功后 3-5 个工作日退款。\n\n[来源: 退款政策.md]"
+    },
+    {
+      "id": "S08",
+      "message": "帮我查一下ORD-1003的订单状态",
+      "scenario": "纯业务-订单查询",
+      "expected_tools": [
+        "create_ticket"
+      ],
+      "actual_tools": [
+        "create_ticket"
+      ],
+      "tool_ok": true,
+      "expected_keywords": [
+        "ORD-1003"
+      ],
+      "kw_ok": true,
+      "kw_missed": [],
+      "answer_preview": "工单ID: API-20260910150159-a4d207\n分类: 订单\n状态: 已解决\n处理结果: 您好～已为您查到订单 **ORD-1003** 的最新状态：\n\n- **当前状态**：待发货 📦\n- **商品**：华为 Watch "
+    },
+    {
+      "id": "S09",
+      "message": "ORD-1005我要退差价，买的时候99现在79了",
+      "scenario": "纯业务-退差价",
+      "expected_tools": [
+        "create_ticket"
+      ],
+      "actual_tools": [
+        "create_ticket"
+      ],
+      "tool_ok": true,
+      "expected_keywords": [
+        "ORD-1005",
+        "差"
+      ],
+      "kw_ok": true,
+      "kw_missed": [],
+      "answer_preview": "工单ID: API-20260910150206-1d4fbe\n分类: 订单\n状态: 已解决\n处理结果: 刘洋您好，您的退差价申请已处理完成啦～\n\n经核实，订单 ORD-1005（飞利浦电动牙刷HX9960）当前状态为「已发货」，符合退差价"
+    },
+    {
+      "id": "S10",
+      "message": "把ORD-1003的收货地址改成上海市徐汇区",
+      "scenario": "纯业务-改地址",
+      "expected_tools": [
+        "create_ticket"
+      ],
+      "actual_tools": [
+        "create_ticket"
+      ],
+      "tool_ok": true,
+      "expected_keywords": [
+        "ORD-1003",
+        "地址"
+      ],
+      "kw_ok": true,
+      "kw_missed": [],
+      "answer_preview": "工单ID: API-20260910150212-679821\n分类: 订单\n状态: 已解决\n处理结果: 亲，订单 ORD-1003 的收货地址已经帮您更新好啦～ ✅\n\n📦 订单信息\n· 商品：华为Watch GT5\n· 金额：¥2288."
+    },
+    {
+      "id": "S11",
+      "message": "催一下ORD-1008的快递，太慢了",
+      "scenario": "纯业务-催物流",
+      "expected_tools": [
+        "create_ticket"
+      ],
+      "actual_tools": [
+        "create_ticket"
+      ],
+      "tool_ok": true,
+      "expected_keywords": [
+        "ORD-1008",
+        "催"
+      ],
+      "kw_ok": false,
+      "kw_missed": [
+        "催"
+      ],
+      "answer_preview": "工单ID: API-20260910150220-b3ca3a\n分类: 物流\n状态: 已关闭\n处理结果: 【转人工】分类：物流\n原因：风险拦截——物流停滞：运单 ZT9911227733（运输中），最后更新 2026-08-02 00:00"
+    },
+    {
+      "id": "S12",
+      "message": "ORD-1004收到的商品有质量问题，我要换货",
+      "scenario": "纯业务-售后建单",
+      "expected_tools": [
+        "create_ticket"
+      ],
+      "actual_tools": [
+        "query_rag",
+        "create_ticket"
+      ],
+      "tool_ok": true,
+      "expected_keywords": [
+        "ORD-1004",
+        "质量"
+      ],
+      "kw_ok": true,
+      "kw_missed": [],
+      "answer_preview": "工单ID: API-20260910150226-c3fe34\n分类: 售后\n状态: 已解决\n处理结果: 陈静您好，已为您处理订单 ORD-1004 的换货申请～\n\n📦 订单信息\n· 商品：Sony WH-1000XM6\n· 金额：¥269"
+    },
+    {
+      "id": "S13",
+      "message": "运单号SF1234567890帮我查一下到哪了",
+      "scenario": "纯业务-物流追踪",
+      "expected_tools": [
+        "create_ticket"
+      ],
+      "actual_tools": [
+        "create_ticket"
+      ],
+      "tool_ok": true,
+      "expected_keywords": [
+        "SF1234567890"
+      ],
+      "kw_ok": true,
+      "kw_missed": [],
+      "answer_preview": "工单ID: API-20260910150234-2b32a2\n分类: 物流\n状态: 已解决\n处理结果: 亲，您的包裹已经到啦！📦\n\n运单号 **SF1234567890**（顺丰速运）最新状态如下：\n\n- **当前状态**：已签收 ✅\n-"
+    },
+    {
+      "id": "S14",
+      "message": "给ORD-1006加个备注：发货前电话确认",
+      "scenario": "纯业务-订单修改",
+      "expected_tools": [
+        "create_ticket"
+      ],
+      "actual_tools": [
+        "create_ticket"
+      ],
+      "tool_ok": true,
+      "expected_keywords": [
+        "ORD-1006",
+        "备注"
+      ],
+      "kw_ok": true,
+      "kw_missed": [],
+      "answer_preview": "工单ID: API-20260910150243-3cbbbc\n分类: 订单\n状态: 已解决\n处理结果: 已为订单 **ORD-1006** 添加备注：「发货前电话确认」✅\n\n顺便帮您核对了一下订单信息：\n\n- **商品**：Apple M"
+    },
+    {
+      "id": "S15",
+      "message": "退货政策是什么，另外帮我把ORD-2001退了",
+      "scenario": "混合-先查后退",
+      "expected_tools": [
+        "query_rag",
+        "create_ticket"
+      ],
+      "actual_tools": [
+        "query_rag",
+        "create_ticket"
+      ],
+      "tool_ok": true,
+      "expected_keywords": [
+        "退",
+        "ORD-2001"
+      ],
+      "kw_ok": false,
+      "kw_missed": [
+        "退"
+      ],
+      "answer_preview": "工单ID: API-20260910150250-f9abe4\n分类: 售后\n状态: 已关闭\n处理结果: 【转人工】分类：售后\n原因：工具执行失败——query_order: 订单 ORD-2001 不存在，请核实单号后重试。; query"
+    },
+    {
+      "id": "S16",
+      "message": "换货有什么要求？ORD-1004我想换一个",
+      "scenario": "混合-先查后换",
+      "expected_tools": [
+        "query_rag",
+        "create_ticket"
+      ],
+      "actual_tools": [
+        "query_rag",
+        "create_ticket"
+      ],
+      "tool_ok": true,
+      "expected_keywords": [
+        "换",
+        "ORD-1004"
+      ],
+      "kw_ok": true,
+      "kw_missed": [],
+      "answer_preview": "工单ID: API-20260910150258-b0a646\n分类: 售后\n状态: 已解决\n处理结果: 陈静您好，您的换货申请已为您成功提交啦～\n\n**订单信息**\n- 订单号：ORD-1004\n- 商品：Sony WH-1000XM6\n"
+    },
+    {
+      "id": "S17",
+      "message": "你们退款多长时间到账？我上周的订单还没收到退款",
+      "scenario": "混合-政策+催退款",
+      "expected_tools": [
+        "query_rag",
+        "create_ticket"
+      ],
+      "actual_tools": [
+        "query_rag",
+        "create_ticket"
+      ],
+      "tool_ok": true,
+      "expected_keywords": [
+        "退款"
+      ],
+      "kw_ok": false,
+      "kw_missed": [
+        "退款"
+      ],
+      "answer_preview": "工单ID: API-20260910150340-150e92\n分类: 售后\n状态: 已关闭\n处理结果: 【转人工】分类：售后\n原因：无法确定需要调用的工具，信息不足，转人工处理。\n已提取信息：{\"order_id\": null, \"tra"
+    },
+    {
+      "id": "S18",
+      "message": "公司规定退货运费谁出？我有个单子要退",
+      "scenario": "混合-先查后退",
+      "expected_tools": [
+        "query_rag",
+        "create_ticket"
+      ],
+      "actual_tools": [
+        "query_rag",
+        "create_ticket"
+      ],
+      "tool_ok": true,
+      "expected_keywords": [
+        "退",
+        "运费"
+      ],
+      "kw_ok": false,
+      "kw_missed": [
+        "退",
+        "运费"
+      ],
+      "answer_preview": "工单ID: API-20260910150352-6bda6a\n分类: 售后\n状态: 已关闭\n处理结果: 【转人工】分类：售后\n原因：无法确定需要调用的工具，信息不足，转人工处理。\n已提取信息：{\"order_id\": null, \"tra"
+    },
+    {
+      "id": "S19",
+      "message": "物流要几天能到上海？帮我看看我的快递到哪了",
+      "scenario": "混合-查询+追踪",
+      "expected_tools": [
+        "query_rag",
+        "create_ticket"
+      ],
+      "actual_tools": [
+        "query_rag",
+        "create_ticket"
+      ],
+      "tool_ok": true,
+      "expected_keywords": [
+        "物流",
+        "上海"
+      ],
+      "kw_ok": false,
+      "kw_missed": [
+        "上海"
+      ],
+      "answer_preview": "工单ID: API-20260910150359-4f3cc9\n分类: 物流\n状态: 已关闭\n处理结果: 【转人工】分类：物流\n原因：无法确定需要调用的工具，信息不足，转人工处理。\n已提取信息：{\"order_id\": null, \"tra"
+    },
+    {
+      "id": "S20",
+      "message": "售后政策在哪看，我买的手机屏幕有问题要修",
+      "scenario": "混合-先查后修",
+      "expected_tools": [
+        "query_rag",
+        "create_ticket"
+      ],
+      "actual_tools": [
+        "query_rag",
+        "create_ticket"
+      ],
+      "tool_ok": true,
+      "expected_keywords": [
+        "售后",
+        "修",
+        "屏幕"
+      ],
+      "kw_ok": false,
+      "kw_missed": [
+        "修",
+        "屏幕"
+      ],
+      "answer_preview": "工单ID: API-20260910150405-5c9cfa\n分类: 售后\n状态: 已关闭\n处理结果: 【转人工】分类：售后\n原因：无法确定需要调用的工具，信息不足，转人工处理。\n已提取信息：{\"order_id\": null, \"tra"
+    },
+    {
+      "id": "S21",
+      "message": "退差价有时间限制吗？我上周买的现在降价了帮我退一下",
+      "scenario": "混合-政策+退差价",
+      "expected_tools": [
+        "query_rag",
+        "create_ticket"
+      ],
+      "actual_tools": [
+        "query_rag",
+        "create_ticket"
+      ],
+      "tool_ok": true,
+      "expected_keywords": [
+        "差",
+        "时间"
+      ],
+      "kw_ok": false,
+      "kw_missed": [
+        "差",
+        "时间"
+      ],
+      "answer_preview": "工单ID: API-20260910150414-9a330f\n分类: 订单\n状态: 已关闭\n处理结果: 【转人工】分类：订单\n原因：无法确定需要调用的工具，信息不足，转人工处理。\n已提取信息：{\"order_id\": null, \"tra"
+    },
+    {
+      "id": "S22",
+      "message": "你好",
+      "scenario": "边界-闲聊",
+      "expected_tools": [],
+      "actual_tools": [],
+      "tool_ok": true,
+      "expected_keywords": [],
+      "kw_ok": true,
+      "kw_missed": [],
+      "answer_preview": "你好"
+    },
+    {
+      "id": "S23",
+      "message": "在吗",
+      "scenario": "边界-闲聊",
+      "expected_tools": [],
+      "actual_tools": [],
+      "tool_ok": true,
+      "expected_keywords": [],
+      "kw_ok": true,
+      "kw_missed": [],
+      "answer_preview": "在吗"
+    },
+    {
+      "id": "S24",
+      "message": "帮我看看我的快递",
+      "scenario": "边界-模糊表述",
+      "expected_tools": [
+        "create_ticket"
+      ],
+      "actual_tools": [
+        "create_ticket"
+      ],
+      "tool_ok": true,
+      "expected_keywords": [
+        "快递"
+      ],
+      "kw_ok": false,
+      "kw_missed": [
+        "快递"
+      ],
+      "answer_preview": "工单ID: API-20260910150426-b8f965\n分类: 物流\n状态: 已关闭\n处理结果: 【转人工】分类：物流\n原因：无法确定需要调用的工具，信息不足，转人工处理。\n已提取信息：{\"order_id\": null, \"tra"
+    },
+    {
+      "id": "S25",
+      "message": "退款退款退款",
+      "scenario": "边界-情绪化",
+      "expected_tools": [
+        "query_rag"
+      ],
+      "actual_tools": [
+        "query_rag",
+        "create_ticket"
+      ],
+      "tool_ok": true,
+      "expected_keywords": [
+        "退款"
+      ],
+      "kw_ok": false,
+      "kw_missed": [
+        "退款"
+      ],
+      "answer_preview": "工单ID: API-20260910150438-dac6b2\n分类: 售后\n状态: 已关闭\n处理结果: 【转人工】分类：售后\n原因：无法确定需要调用的工具，信息不足，转人工处理。\n已提取信息：{\"order_id\": null, \"tra"
+    },
+    {
+      "id": "S26",
+      "message": "我想问一下",
+      "scenario": "边界-不完整",
+      "expected_tools": [],
+      "actual_tools": [],
+      "tool_ok": true,
+      "expected_keywords": [],
+      "kw_ok": true,
+      "kw_missed": [],
+      "answer_preview": "我想问一下"
+    },
+    {
+      "id": "S27",
+      "message": "我买的东西怎么还没到",
+      "scenario": "边界-无订单号",
+      "expected_tools": [
+        "create_ticket"
+      ],
+      "actual_tools": [
+        "create_ticket"
+      ],
+      "tool_ok": true,
+      "expected_keywords": [
+        "到"
+      ],
+      "kw_ok": false,
+      "kw_missed": [
+        "到"
+      ],
+      "answer_preview": "工单ID: API-20260910150447-0df2fe\n分类: 物流\n状态: 已关闭\n处理结果: 【转人工】分类：物流\n原因：无法确定需要调用的工具，信息不足，转人工处理。\n已提取信息：{\"order_id\": null, \"tra"
+    },
+    {
+      "id": "S28",
+      "message": "你们客服电话多少",
+      "scenario": "边界-联系方式",
+      "expected_tools": [
+        "query_rag"
+      ],
+      "actual_tools": [],
+      "tool_ok": false,
+      "expected_keywords": [
+        "电话"
+      ],
+      "kw_ok": true,
+      "kw_missed": [],
+      "answer_preview": "你们客服电话多少"
+    },
+    {
+      "id": "S29",
+      "message": "这个商品买贵了",
+      "scenario": "边界-模糊售后",
+      "expected_tools": [
+        "query_rag"
+      ],
+      "actual_tools": [
+        "create_ticket",
+        "query_rag"
+      ],
+      "tool_ok": true,
+      "expected_keywords": [
+        "差",
+        "贵"
+      ],
+      "kw_ok": false,
+      "kw_missed": [
+        "贵"
+      ],
+      "answer_preview": "根据文档片段，关于退差价的条件和规则如下：\n\n- 差价退款：购买后 7 天内商品降价，可申请退差价，1-3 个工作日到账\n- 价保退款 = 购买价 - 当前价，单件商品最高退 500 元\n\n[来源: 退款政策.md]"
+    },
+    {
+      "id": "S30",
+      "message": "上个礼拜二下的那个红色的单子怎么还没到啊",
+      "scenario": "边界-口语化",
+      "expected_tools": [
+        "create_ticket"
+      ],
+      "actual_tools": [
+        "create_ticket"
+      ],
+      "tool_ok": true,
+      "expected_keywords": [
+        "到"
+      ],
+      "kw_ok": false,
+      "kw_missed": [
+        "到"
+      ],
+      "answer_preview": "工单ID: API-20260910150459-ab6dc4\n分类: 物流\n状态: 已关闭\n处理结果: 【转人工】分类：物流\n原因：无法确定需要调用的工具，信息不足，转人工处理。\n已提取信息：{\"order_id\": null, \"tra"
+    },
+    {
+      "id": "S31",
+      "message": "我想退掉ORD-1003，但不确定能不能退。先帮我查下退货条件，能退的话就帮我退了",
+      "scenario": "三轮链路-先查后操作",
+      "expected_tools": [
+        "query_rag",
+        "create_ticket"
+      ],
+      "actual_tools": [
+        "query_rag",
+        "create_ticket"
+      ],
+      "tool_ok": true,
+      "expected_keywords": [
+        "7天",
+        "ORD-1003",
+        "退"
+      ],
+      "kw_ok": false,
+      "kw_missed": [
+        "7天"
+      ],
+      "answer_preview": "工单ID: API-20260910150506-780204\n分类: 售后\n状态: 已解决\n处理结果: 王磊您好～已为您核实订单 ORD-1003：\n\n- 商品：华为Watch GT5\n- 金额：2288.00 元\n- 下单时间：2026"
+    },
+    {
+      "id": "S32",
+      "message": "我前天买的ORD-1003还没发货，退货政策怎么说的？我这情况能退吗",
+      "scenario": "上下文传递-订单状态+政策匹配",
+      "expected_tools": [
+        "create_ticket",
+        "query_rag"
+      ],
+      "actual_tools": [
+        "query_rag",
+        "create_ticket"
+      ],
+      "tool_ok": true,
+      "expected_keywords": [
+        "待发货",
+        "7天",
+        "退"
+      ],
+      "kw_ok": false,
+      "kw_missed": [
+        "7天",
+        "退"
+      ],
+      "answer_preview": "工单ID: API-20260910150513-9574f7\n分类: 订单\n状态: 已关闭\n处理结果: 【转人工】分类：订单\n原因：风险拦截——物流停滞：运单 SF4400221133（运输中），最后更新 2026-08-03 16:00"
+    }
+  ]
+}

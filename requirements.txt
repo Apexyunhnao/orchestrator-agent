@@ -1,9 +1,10 @@
-langgraph>=0.2.0
-langchain>=0.3.0
-langchain-openai>=0.2.0
+# 依赖锁定：这套版本组合已实测跑通 32 条评估（2026-09-11）
+langgraph==0.2.76
+langchain==0.3.30
+langchain-openai==0.2.14
+openai==1.109.1
 fastapi>=0.100.0
 uvicorn[standard]>=0.20.0
-openai>=1.0.0
 httpx>=0.24.0
 python-dotenv>=1.0.0
 pydantic>=2.0.0
