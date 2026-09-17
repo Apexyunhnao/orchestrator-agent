@@ -1,0 +1,266 @@
+[
+  {
+    "id": "ORC-031",
+    "message": "刚下了一单，什么时候能送到",
+    "expected_intent": "service",
+    "category": "业务-物流追踪"
+  },
+  {
+    "id": "ORC-024",
+    "message": "给ORD-1006加个备注：发货前电话确认",
+    "expected_intent": "service",
+    "category": "业务-订单修改"
+  },
+  {
+    "id": "ORC-050",
+    "message": "我想问一下",
+    "expected_intent": "knowledge",
+    "category": "边界-不完整"
+  },
+  {
+    "id": "ORC-012",
+    "message": "密码多少天要改一次",
+    "expected_intent": "knowledge",
+    "category": "知识-信息安全"
+  },
+  {
+    "id": "ORC-017",
+    "message": "ORD-1002到哪了，什么时候能收货",
+    "expected_intent": "service",
+    "category": "业务-物流追踪"
+  },
+  {
+    "id": "ORC-021",
+    "message": "催一下ORD-1008的快递，太慢了",
+    "expected_intent": "service",
+    "category": "业务-物流催派"
+  },
+  {
+    "id": "ORC-051",
+    "message": "我是谁",
+    "expected_intent": "knowledge",
+    "category": "边界-闲聊"
+  },
+  {
+    "id": "ORC-054",
+    "message": "查一下ORD-1005，另外这个订单能退款吗，退款政策是什么",
+    "expected_intent": "mixed",
+    "category": "边界-长句混合"
+  },
+  {
+    "id": "ORC-036",
+    "message": "退货政策是什么，另外帮我把ORD-2001退了",
+    "expected_intent": "mixed",
+    "category": "混合-先查后退"
+  },
+  {
+    "id": "ORC-020",
+    "message": "ORD-1007这个订单的物流怎么三天没更新了",
+    "expected_intent": "service",
+    "category": "业务-物流追踪"
+  },
+  {
+    "id": "ORC-010",
+    "message": "入职第一天要找谁报到",
+    "expected_intent": "knowledge",
+    "category": "知识-入职指南"
+  },
+  {
+    "id": "ORC-034",
+    "message": "我下的订单物流信息显示已签收但我没收到货",
+    "expected_intent": "service",
+    "category": "业务-物流追踪"
+  },
+  {
+    "id": "ORC-042",
+    "message": "我想知道怎么改收货地址，还有一个订单地址写错了",
+    "expected_intent": "mixed",
+    "category": "混合-知识+业务"
+  },
+  {
+    "id": "ORC-045",
+    "message": "售后政策在哪看，我买的手机屏幕有问题",
+    "expected_intent": "mixed",
+    "category": "混合-先查后修"
+  },
+  {
+    "id": "ORC-030",
+    "message": "这个订单帮我查一下现在什么状态",
+    "expected_intent": "service",
+    "category": "业务-订单查询"
+  },
+  {
+    "id": "ORC-055",
+    "message": "上个礼拜二下的那个红色的那个单子怎么还没到啊",
+    "expected_intent": "service",
+    "category": "边界-口语化"
+  },
+  {
+    "id": "ORC-004",
+    "message": "试用期多久",
+    "expected_intent": "knowledge",
+    "category": "知识-规章制度"
+  },
+  {
+    "id": "ORC-022",
+    "message": "ORD-1004收到的商品有质量问题，我要换货",
+    "expected_intent": "service",
+    "category": "业务-售后"
+  },
+  {
+    "id": "ORC-047",
+    "message": "在吗",
+    "expected_intent": "knowledge",
+    "category": "边界-闲聊"
+  },
+  {
+    "id": "ORC-005",
+    "message": "绩效考核怎么申诉",
+    "expected_intent": "knowledge",
+    "category": "知识-规章制度"
+  },
+  {
+    "id": "ORC-029",
+    "message": "买的衣服尺码不对，能换个大一号的吗",
+    "expected_intent": "service",
+    "category": "业务-售后"
+  },
+  {
+    "id": "ORC-011",
+    "message": "加班怎么算工资",
+    "expected_intent": "knowledge",
+    "category": "知识-规章制度"
+  },
+  {
+    "id": "ORC-043",
+    "message": "IT说我的账号权限不够，能帮我开通VPN吗",
+    "expected_intent": "mixed",
+    "category": "混合-知识+业务"
+  },
+  {
+    "id": "ORC-023",
+    "message": "查一下我昨天买的那个订单怎么样了",
+    "expected_intent": "service",
+    "category": "业务-订单查询"
+  },
+  {
+    "id": "ORC-039",
+    "message": "年假怎么申请？另外帮我查一下ORD-2003到哪了",
+    "expected_intent": "mixed",
+    "category": "混合-知识+业务"
+  },
+  {
+    "id": "ORC-025",
+    "message": "ORD-1009的收货人改成李明，电话13800138000",
+    "expected_intent": "service",
+    "category": "业务-订单修改"
+  },
+  {
+    "id": "ORC-001",
+    "message": "年假能休几天",
+    "expected_intent": "knowledge",
+    "category": "知识-规章制度"
+  },
+  {
+    "id": "ORC-026",
+    "message": "这个快递怎么停在分拨中心不动了",
+    "expected_intent": "service",
+    "category": "业务-物流追踪"
+  },
+  {
+    "id": "ORC-052",
+    "message": "退款退款退款",
+    "expected_intent": "service",
+    "category": "边界-情绪化"
+  },
+  {
+    "id": "ORC-019",
+    "message": "ORD-1005我要退差价，买的时候99现在79了",
+    "expected_intent": "service",
+    "category": "业务-售后"
+  },
+  {
+    "id": "ORC-032",
+    "message": "上次那个退款的工单处理完了没有",
+    "expected_intent": "service",
+    "category": "业务-售后"
+  },
+  {
+    "id": "ORC-037",
+    "message": "换货需要什么条件？ORD-1004我想换一个",
+    "expected_intent": "mixed",
+    "category": "混合-先查后换"
+  },
+  {
+    "id": "ORC-027",
+    "message": "我前天买的洗发水怎么还没发货",
+    "expected_intent": "service",
+    "category": "业务-订单查询"
+  },
+  {
+    "id": "ORC-013",
+    "message": "离职流程怎么走",
+    "expected_intent": "knowledge",
+    "category": "知识-规章制度"
+  },
+  {
+    "id": "ORC-040",
+    "message": "公司规定退货运费谁出？我有个单子要退",
+    "expected_intent": "mixed",
+    "category": "混合-先查后退"
+  },
+  {
+    "id": "ORC-033",
+    "message": "运单号SF1234567890帮我查一下",
+    "expected_intent": "service",
+    "category": "业务-物流追踪"
+  },
+  {
+    "id": "ORC-049",
+    "message": "帮我看看我的快递",
+    "expected_intent": "service",
+    "category": "边界-模糊表述"
+  },
+  {
+    "id": "ORC-014",
+    "message": "远程办公安全要注意什么",
+    "expected_intent": "knowledge",
+    "category": "知识-信息安全"
+  },
+  {
+    "id": "ORC-046",
+    "message": "你好",
+    "expected_intent": "knowledge",
+    "category": "边界-闲聊"
+  },
+  {
+    "id": "ORC-053",
+    "message": "你们客服电话多少",
+    "expected_intent": "knowledge",
+    "category": "边界-联系方式"
+  },
+  {
+    "id": "ORC-003",
+    "message": "报销需要什么材料",
+    "expected_intent": "knowledge",
+    "category": "知识-规章制度"
+  },
+  {
+    "id": "ORC-028",
+    "message": "不小心下错单了能取消吗",
+    "expected_intent": "service",
+    "category": "业务-订单修改"
+  },
+  {
+    "id": "ORC-038",
+    "message": "报销流程怎么走，我上个月的差旅费单子帮我看看",
+    "expected_intent": "mixed",
+    "category": "混合-政策+业务"
+  },
+  {
+    "id": "ORC-006",
+    "message": "公司邮箱怎么配置",
+    "expected_intent": "knowledge",
+    "category": "知识-IT支持"
+  }
+]

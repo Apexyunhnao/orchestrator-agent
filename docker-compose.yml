@@ -1,0 +1,60 @@
+# 智能客服系统 — 三服务 Docker Compose
+# 启动: docker compose up -d --build
+# 编排器 :8000 | 客服工单 Agent :8001 | RAG Agent :8002
+#
+# 环境变量从同目录 .env 读取（DEEPSEEK_API_KEY / AUTH_SECRET）。
+# ⚠️ 三个服务必须共用同一个 AUTH_SECRET —— 下游服务各自验签同一枚 JWT。
+#
+# 注意：健康检查用 python 标准库而不是 curl —— python:3.x-slim 镜像里没有 curl，
+#       用 curl 会让 healthcheck 恒失败，进而卡死 orchestrator 的 depends_on: service_healthy。
+
+services:
+  rag:
+    build: ../rag-agent
+    ports:
+      - "8002:8002"
+    env_file:
+      - .env
+      # rag 专有变量（HF_ENDPOINT / EMBED_MODEL / LLM_MODEL）在自己的 .env 里；
+      # 多个 env_file 后者覆盖前者，但 AUTH_SECRET 三仓必须是同一个值。
+      - ../rag-agent/.env
+    volumes:
+      - ../rag-agent/data:/app/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8002/health', timeout=3).status==200 else 1)"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+  ticket:
+    build: ../customer-service-agent
+    ports:
+      - "8001:8001"
+    env_file:
+      - .env
+    volumes:
+      - ../customer-service-agent/data:/app/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8001/health', timeout=3).status==200 else 1)"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+  orchestrator:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      rag:
+        condition: service_healthy
+      ticket:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8000/health', timeout=3).status==200 else 1)"]
+      interval: 10s
+      timeout: 5s
+      retries: 12

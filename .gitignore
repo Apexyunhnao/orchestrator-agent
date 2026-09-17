@@ -1,0 +1,15 @@
+__pycache__/
+venv/
+.venv/
+*.pyc
+.env
+*.db
+data/gateway.db
+logs/
+.DS_Store
+*.bak-*
+*.bak
+
+# 预防：以下路径出现在仓库内也不应被提交（提交前扫描提示，2026-09-16）
+.env.local
+node_modules

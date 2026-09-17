@@ -1,0 +1,68 @@
+[
+  {
+    "id": "ORC-035",
+    "message": "这个商品买贵了，能不能退差价",
+    "expected_intent": "service",
+    "category": "业务-售后"
+  },
+  {
+    "id": "ORC-044",
+    "message": "退差价有时间限制吗？我上周买的现在降价了",
+    "expected_intent": "mixed",
+    "category": "混合-先查后退"
+  },
+  {
+    "id": "ORC-007",
+    "message": "打印机连不上怎么弄",
+    "expected_intent": "knowledge",
+    "category": "知识-IT支持"
+  },
+  {
+    "id": "ORC-009",
+    "message": "信息安全等级是怎么划分的",
+    "expected_intent": "knowledge",
+    "category": "知识-信息安全"
+  },
+  {
+    "id": "ORC-015",
+    "message": "新员工培训是什么时候",
+    "expected_intent": "knowledge",
+    "category": "知识-入职指南"
+  },
+  {
+    "id": "ORC-016",
+    "message": "帮我查一下ORD-1003的订单状态",
+    "expected_intent": "service",
+    "category": "业务-订单查询"
+  },
+  {
+    "id": "ORC-018",
+    "message": "帮我把ORD-1003的收货地址改成上海市徐汇区漕溪北路595号",
+    "expected_intent": "service",
+    "category": "业务-订单修改"
+  },
+  {
+    "id": "ORC-048",
+    "message": "今天天气怎么样",
+    "expected_intent": "knowledge",
+    "category": "边界-不相关问题"
+  },
+  {
+    "id": "ORC-002",
+    "message": "VPN连不上怎么办",
+    "expected_intent": "knowledge",
+    "category": "知识-IT支持"
+  },
+  {
+    "id": "ORC-008",
+    "message": "WiFi密码是多少",
+    "expected_intent": "knowledge",
+    "category": "知识-IT支持"
+  },
+  {
+    "id": "ORC-041",
+    "message": "加班费怎么算的，我这个月加班了三天帮我算一下",
+    "expected_intent": "mixed",
+    "category": "混合-政策+业务"
+  }
+]
