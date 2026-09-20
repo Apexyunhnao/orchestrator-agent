@@ -13,3 +13,6 @@ logs/
 # 预防：以下路径出现在仓库内也不应被提交（提交前扫描提示，2026-09-16）
 .env.local
 node_modules
+
+# ── 逐屏截图证据（运行态产物；索引见目录内 README.md 与 docs/development-log.md）──
+_evidence/
